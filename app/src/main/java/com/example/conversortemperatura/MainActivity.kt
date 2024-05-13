@@ -13,11 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonConverter.setOnClickListener {
-            val celsius = binding.editText.text.toString().toDouble()
+            if(!binding.editText.text.toString().isEmpty()){
+                val celsius = binding.editText.text.toString().toDouble()
 
-            val fahrenheit = celsius * 1.8 + 32
+                val fahrenheit = String.format("%.2f",celsius * 1.8 + 32)
 
-            binding.test.text = "$fahrenheit °F"
+                binding.test.text = "$fahrenheit °F"
+            }else{
+                binding.test.text = "Temperatura inválida"
+            }
+
         }
     }
 }
